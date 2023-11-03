@@ -112,3 +112,28 @@ function romanToInt(s: string): number {
 
   return result;
 }
+
+// reference Valid Parentheses
+function isValid(s: string): boolean {
+  const stack: string[] = [];
+
+  const starts = "({[";
+
+  const ends = ")}]";
+
+  for (const char of s) {
+    if (starts.includes(char)) {
+      stack.push(char);
+    } else if (ends.includes(char)) {
+      if (stack.length === 0) return false;
+
+      const first = stack.pop();
+
+      if (starts.indexOf(first!) !== ends.indexOf(char)) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
