@@ -137,3 +137,35 @@ function isValid(s: string): boolean {
 
   return stack.length === 0;
 }
+
+// reference Int to Roman
+function intToRoman(num: number): string {
+  const map = new Map<number, string>();
+
+  map.set(1, "I");
+  map.set(4, "IV");
+  map.set(5, "V");
+  map.set(9, "IX");
+  map.set(10, "X");
+  map.set(40, "XL");
+  map.set(50, "L");
+  map.set(90, "XC");
+  map.set(100, "C");
+  map.set(400, "CD");
+  map.set(500, "D");
+  map.set(900, "CM");
+  map.set(1000, "M");
+
+  let result = "";
+
+  const keys = Array.from(map.keys()).reverse();
+
+  for (const key of keys) {
+    while (num >= key) {
+      result += map.get(key);
+      num -= key;
+    }
+  }
+
+  return result;
+}
