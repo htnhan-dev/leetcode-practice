@@ -171,32 +171,32 @@ function intToRoman(num: number): string {
 }
 
 // reference add two numbers
-function addTwoNumbers(
-  l1: ListNode | null,
-  l2: ListNode | null
-): ListNode | null {
-  let result: ListNode | null = new ListNode(0);
-  let current: ListNode | null = result;
+// function addTwoNumbers(
+//   l1: ListNode | null,
+//   l2: ListNode | null
+// ): ListNode | null {
+//   let result: ListNode | null = new ListNode(0);
+//   let current: ListNode | null = result;
 
-  let carry: number = 0;
+//   let carry: number = 0;
 
-  while (l1 !== null || l2 !== null) {
-    const x: number = l1 !== null ? l1.val : 0;
-    const y: number = l2 !== null ? l2.val : 0;
+//   while (l1 !== null || l2 !== null) {
+//     const x: number = l1 !== null ? l1.val : 0;
+//     const y: number = l2 !== null ? l2.val : 0;
 
-    const sum: number = x + y + carry;
-    carry = Math.floor(sum / 10);
+//     const sum: number = x + y + carry;
+//     carry = Math.floor(sum / 10);
 
-    current.next = new ListNode(sum % 10);
-    current = current.next;
+//     current.next = new ListNode(sum % 10);
+//     current = current.next;
 
-    if (l1 !== null) l1 = l1.next;
-    if (l2 !== null) l2 = l2.next;
-  }
+//     if (l1 !== null) l1 = l1.next;
+//     if (l2 !== null) l2 = l2.next;
+//   }
 
-  if (carry > 0) {
-    current.next = new ListNode(carry);
-  }
+//   if (carry > 0) {
+//     current.next = new ListNode(carry);
+//   }
 
-  return result.next;
-}
+//   return result.next;
+// }
