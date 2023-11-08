@@ -200,3 +200,64 @@ function intToRoman(num: number): string {
 
 //   return result.next;
 // }
+
+// reference same tree
+// function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
+//     if(p === null && q === null) return true
+
+//     if(p === null || q === null) return false
+
+//     if(p.val !== q.val) return false
+
+//     return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+
+// };
+
+// reference unique binary search trees
+function numTrees(n: number): number {
+  if (n <= 1) {
+    return 1;
+  }
+
+  const numBSTs: number[] = new Array(n + 1).fill(0);
+  numBSTs[0] = 1;
+  numBSTs[1] = 1;
+
+  for (let i = 2; i <= n; i++) {
+    for (let j = 0; j < i; j++) {
+      numBSTs[i] += numBSTs[j] * numBSTs[i - j - 1];
+    }
+  }
+
+  return numBSTs[n];
+}
+
+// reference 3 sum
+function threeSum(nums: number[]): number[][] {
+  nums.sort((a, b) => a - b);
+  const result: number[][] = [];
+
+  for (let i = 0; i < nums.length - 2; i++) {
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+    let left = i + 1;
+    let right = nums.length - 1;
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
+      if (sum === 0) {
+        result.push([nums[i], nums[left], nums[right]]);
+        while (left < right && nums[left] === nums[left + 1]) left++;
+        while (left < right && nums[right] === nums[right - 1]) right--;
+        left++;
+        right--;
+      } else if (sum < 0) {
+        left++;
+      } else {
+        right--;
+      }
+    }
+  }
+
+  return result;
+}
