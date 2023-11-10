@@ -261,3 +261,16 @@ function threeSum(nums: number[]): number[][] {
 
   return result;
 }
+
+// reference remove duplicate from sorted array
+function removeDuplicates(nums: number[]): number {
+  let i = 0;
+
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[i] !== nums[j]) {
+      nums[++i] = nums[j];
+    }
+  }
+
+  return i + 1;
+}
