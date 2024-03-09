@@ -274,3 +274,29 @@ function removeDuplicates(nums: number[]): number {
 
   return i + 1;
 }
+
+// reference remove element
+function removeElement(nums: number[], val: number): number {
+  let i = 0;
+
+  for (let j = 0; j < nums.length; j++) {
+    if (nums[j] !== val) {
+      nums[i++] = nums[j];
+    }
+  }
+
+  return i;
+}
+
+// reference maximum subarray
+function maxSubArray(nums: number[]): number {
+  let max = -Infinity;
+  let current = 0;
+
+  for (const num of nums) {
+    current = Math.max(current + num, num);
+    max = Math.max(max, current);
+  }
+
+  return max;
+}
